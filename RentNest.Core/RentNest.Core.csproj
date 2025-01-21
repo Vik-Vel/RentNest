@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RentNest.Infrastructure\RentNest.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentNest", "RentNest\RentNest.csproj", "{1C7DF540-FBBE-42D5-89EA-715657445EE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentNest", "RentNest\RentNest.csproj", "{1C7DF540-FBBE-42D5-89EA-715657445EE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentNest.Core", "RentNest.Core\RentNest.Core.csproj", "{7CEB816F-77CD-4DD6-8E74-EFE1BCB2DF67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentNest.Infrastructure", "RentNest.Infrastructure\RentNest.Infrastructure.csproj", "{E10EF82A-FE02-439C-A2FD-F812726697D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{1C7DF540-FBBE-42D5-89EA-715657445EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C7DF540-FBBE-42D5-89EA-715657445EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C7DF540-FBBE-42D5-89EA-715657445EE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CEB816F-77CD-4DD6-8E74-EFE1BCB2DF67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CEB816F-77CD-4DD6-8E74-EFE1BCB2DF67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CEB816F-77CD-4DD6-8E74-EFE1BCB2DF67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CEB816F-77CD-4DD6-8E74-EFE1BCB2DF67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E10EF82A-FE02-439C-A2FD-F812726697D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E10EF82A-FE02-439C-A2FD-F812726697D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E10EF82A-FE02-439C-A2FD-F812726697D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E10EF82A-FE02-439C-A2FD-F812726697D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

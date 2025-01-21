@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
-using RentNest.Data;
+using RentNest.Infrastructure.Data;
 
 namespace Microsoft.Extensions.DependencyInjection //When extend service collection is good to be in this namespace
 {
