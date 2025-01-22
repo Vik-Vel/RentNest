@@ -38,7 +38,7 @@ namespace RentNest.Infrastructure.Data.Models
 
         [Required]
         [MaxLength(HouseDescriptionMaxLength)]
-        [Column(TypeName =("decimal(18,2"))]
+        [Column(TypeName =("decimal(18,2)"))]
        // [Range(typeof(decimal), HousePricePerMonthMin, HousePricePerMonthMax, ConvertValueInInvariantCulture = true)]
         [Comment("House Price Per Month")]
 
