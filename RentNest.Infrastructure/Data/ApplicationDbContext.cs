@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RentNest.Infrastructure.Data.Models;
 
 namespace RentNest.Infrastructure.Data
 {
@@ -9,5 +10,9 @@ namespace RentNest.Infrastructure.Data
             : base(options)
         {
         }
+
+        public DbSet<Agent> Agents { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<House> Houses { get; set; } = null!;
     }
 }
