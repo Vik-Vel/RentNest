@@ -306,7 +306,7 @@ namespace RentNest.Infrastructure.Migrations
                         .HasColumnType("nvarchar(500)")
                         .HasComment("House Description");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasComment("House Image Url");
@@ -317,7 +317,6 @@ namespace RentNest.Infrastructure.Migrations
                         .HasComment("House Price Per Month");
 
                     b.Property<string>("RenterId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasComment("Renter Identifier");
 
@@ -406,13 +405,13 @@ namespace RentNest.Infrastructure.Migrations
                     b.HasOne("RentNest.Infrastructure.Data.Models.Agent", "Agent")
                         .WithMany("Houses")
                         .HasForeignKey("AgentId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RentNest.Infrastructure.Data.Models.Category", "Category")
                         .WithMany("Houses")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Agent");

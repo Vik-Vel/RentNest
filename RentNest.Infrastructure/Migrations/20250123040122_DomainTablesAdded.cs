@@ -54,11 +54,11 @@ namespace RentNest.Infrastructure.Migrations
                     Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "House Title"),
                     Address = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false, comment: "House address"),
                     Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false, comment: "House Description"),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "House Image Url"),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "House Image Url"),
                     PricePerMonth = table.Column<decimal>(type: "decimal(18,2)", maxLength: 500, nullable: false, comment: "House Price Per Month"),
                     CategoryId = table.Column<int>(type: "int", nullable: false, comment: "House Category Identifier"),
                     AgentId = table.Column<int>(type: "int", nullable: false, comment: "House Agent Identifier"),
-                    RenterId = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Renter Identifier")
+                    RenterId = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Renter Identifier")
                 },
                 constraints: table =>
                 {
@@ -68,13 +68,13 @@ namespace RentNest.Infrastructure.Migrations
                         column: x => x.AgentId,
                         principalTable: "Agents",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Houses_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 },
                 comment: "House to rent");
 
