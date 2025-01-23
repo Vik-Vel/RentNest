@@ -58,10 +58,10 @@ namespace RentNest.Infrastructure.Data.Models
 
 
         [ForeignKey(nameof(AgentId))]
-        Agent Agent { get; set; } = null!;
+        public Agent Agent { get; set; } = null!;
 
         [ForeignKey(nameof(CategoryId))]
-        Category Category { get; set; } = null!;
+        public Category Category { get; set; } = null!;
 
        
 
