@@ -10,7 +10,7 @@ using RentNest.Infrastructure.Data;
 
 namespace RentNest.Infrastructure.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(RentNestDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -329,6 +329,8 @@ namespace RentNest.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AgentId");
+
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Houses", t =>
@@ -401,11 +403,26 @@ namespace RentNest.Infrastructure.Migrations
 
             modelBuilder.Entity("RentNest.Infrastructure.Data.Models.House", b =>
                 {
-                    b.HasOne("RentNest.Infrastructure.Data.Models.Category", null)
+                    b.HasOne("RentNest.Infrastructure.Data.Models.Agent", "Agent")
+                        .WithMany("Houses")
+                        .HasForeignKey("AgentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("RentNest.Infrastructure.Data.Models.Category", "Category")
                         .WithMany("Houses")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Agent");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("RentNest.Infrastructure.Data.Models.Agent", b =>
+                {
+                    b.Navigation("Houses");
                 });
 
             modelBuilder.Entity("RentNest.Infrastructure.Data.Models.Category", b =>

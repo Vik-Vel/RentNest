@@ -11,7 +11,7 @@ using RentNest.Infrastructure.Data;
 
 namespace RentNest.Infrastructure.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(RentNestDbContext))]
     [Migration("20250122030907_InititalMigration")]
     partial class InititalMigration
     {

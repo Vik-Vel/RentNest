@@ -64,11 +64,17 @@ namespace RentNest.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Houses", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Houses_Agents_AgentId",
+                        column: x => x.AgentId,
+                        principalTable: "Agents",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Houses_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 },
                 comment: "House to rent");
 
@@ -76,6 +82,11 @@ namespace RentNest.Infrastructure.Migrations
                 name: "IX_Agents_UserId",
                 table: "Agents",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Houses_AgentId",
+                table: "Houses",
+                column: "AgentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Houses_CategoryId",
@@ -87,10 +98,10 @@ namespace RentNest.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Agents");
+                name: "Houses");
 
             migrationBuilder.DropTable(
-                name: "Houses");
+                name: "Agents");
 
             migrationBuilder.DropTable(
                 name: "Categories");
