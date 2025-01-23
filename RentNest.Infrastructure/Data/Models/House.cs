@@ -34,7 +34,7 @@ namespace RentNest.Infrastructure.Data.Models
         //[MaxLength(HouseImageMaxLength)]
         [Comment("House Image Url")]
 
-        public required string Image { get; set; }
+        public required string ImageUrl { get; set; }
 
         [Required]
         [MaxLength(HouseDescriptionMaxLength)]
@@ -52,7 +52,6 @@ namespace RentNest.Infrastructure.Data.Models
         [Comment("House Agent Identifier")]
         public int AgentId { get; set; }
 
-        [Required]
         [Comment("Renter Identifier")]
         public string? RenterId { get; set; }
 
