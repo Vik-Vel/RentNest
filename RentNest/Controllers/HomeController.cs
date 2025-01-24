@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using RentNest.Core.Models.Home;
 using RentNest.Models;
 using System.Diagnostics;
 
@@ -15,7 +16,9 @@ namespace RentNest.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = new IndexViewModel();
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
