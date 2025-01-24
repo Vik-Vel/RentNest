@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RentNest.Core.Contracts.House;
+using RentNest.Core.Services.House;
 using RentNest.Infrastructure.Data;
 using RentNest.Infrastructure.Data.Common;
 
@@ -11,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection //When extend service collect
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IHouseService, IHouseService>();
+            services.AddScoped<IHouseService, HouseService>();
             return services;
         }
 
