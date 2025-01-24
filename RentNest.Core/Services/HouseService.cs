@@ -2,8 +2,9 @@
 using RentNest.Core.Contracts.House;
 using RentNest.Core.Models.Home;
 using RentNest.Infrastructure.Data.Common;
+using RentNest.Infrastructure.Data.Models;
 
-namespace RentNest.Core.Services.House
+namespace RentNest.Core.Services
 {
     public class HouseService : IHouseService
     {
@@ -16,7 +17,7 @@ namespace RentNest.Core.Services.House
         public async Task<IEnumerable<HouseIndexServiceModel>> LastThreeHouses()
         {
             return await repository
-                .AllReadOnly<Infrastructure.Data.Models.House>()
+                .AllReadOnly<House>()
                 .OrderByDescending(h => h.Id)
                 .Take(3)
                 .Select(h => new HouseIndexServiceModel

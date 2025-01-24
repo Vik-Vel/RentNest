@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RentNest.Core.Contracts.House;
-using RentNest.Core.Services.House;
+using RentNest.Core.Services;
 using RentNest.Infrastructure.Data;
 using RentNest.Infrastructure.Data.Common;
 
