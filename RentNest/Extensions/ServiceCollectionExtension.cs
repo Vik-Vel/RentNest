@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using RentNest.Core.Contracts.House;
 using RentNest.Infrastructure.Data;
+using RentNest.Infrastructure.Data.Common;
 
 namespace Microsoft.Extensions.DependencyInjection //When extend service collection is good to be in this namespace
 {
@@ -9,6 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection //When extend service collect
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddScoped<IHouseService, IHouseService>();
             return services;
         }
 
@@ -17,6 +20,8 @@ namespace Microsoft.Extensions.DependencyInjection //When extend service collect
             var connectionString = config.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             services.AddDbContext<RentNestDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            services.AddScoped<IRepository, Repository>();
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
