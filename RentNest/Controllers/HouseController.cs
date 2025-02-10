@@ -4,8 +4,7 @@ using RentNest.Core.Models.House;
 
 namespace RentNest.Controllers
 {
-    [Authorize]
-    public class HouseController : Controller
+    public class HouseController : BaseController
     {
         [AllowAnonymous]
         [HttpGet]

@@ -1,12 +1,18 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RentNest.Core.Contracts;
 using RentNest.Core.Models.Agent;
 
 namespace RentNest.Controllers
 {
-    [Authorize]
-    public class AgentController : Controller
+    public class AgentController : BaseController
     {
+        private readonly IAgentService agentService;
+
+        public AgentController(IAgentService _agentService)
+        {
+            agentService = _agentService;
+        }
         [HttpGet]
         public async Task<IActionResult> Become()
         {
