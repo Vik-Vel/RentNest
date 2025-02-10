@@ -1,6 +1,6 @@
 ﻿using RentNest.Core.Models.Home;
 
-namespace RentNest.Core.Contracts.House
+namespace RentNest.Core.Contracts
 {
     public interface IHouseService
     {

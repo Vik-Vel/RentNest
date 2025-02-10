@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RentNest.Core.Contracts.House;
+using RentNest.Core.Contracts;
 using RentNest.Core.Models.Home;
 using RentNest.Infrastructure.Data.Common;
 using RentNest.Infrastructure.Data.Models;
