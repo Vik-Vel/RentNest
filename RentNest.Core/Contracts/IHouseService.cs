@@ -4,6 +4,6 @@ namespace RentNest.Core.Contracts
 {
     public interface IHouseService
     {
-        Task<IEnumerable<HouseIndexServiceModel>> LastThreeHouses();
+        Task<IEnumerable<HouseIndexServiceModel>> LastThreeHousesAsync();
     }
 }
