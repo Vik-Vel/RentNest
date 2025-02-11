@@ -27,5 +27,15 @@ namespace RentNest.Infrastructure.Data.Common
             return DbSet<T>()
                 .AsNoTracking();
         }
+
+        public async Task AddAsync<T>(T entity) where T : class
+        {
+            await DbSet<T>().AddAsync(entity);
+        }
+
+        public async Task<int> SaveChangeAsync()
+        {
+            return await context.SaveChangesAsync();
+        }
     }
 }
