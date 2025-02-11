@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RentNest.Core.Contracts;
 using RentNest.Core.Models.Agent;
+using System.Security.Claims;
 
 namespace RentNest.Controllers
 {
@@ -16,6 +16,10 @@ namespace RentNest.Controllers
         [HttpGet]
         public async Task<IActionResult> Become()
         {
+            if (await agentService.ExistByIdAsync(User.Id()))
+            {
+                return BadRequest();
+            }
             var model = new BecomeAgentFormModel();
             return View(model);
         }
