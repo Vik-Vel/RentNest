@@ -14,30 +14,29 @@ namespace RentNest.Core.Services
             repository = _repository;
         }
 
-        public Task CreateAsync(string userId, string phoneNumber)
+        public async Task CreateAsync(string userId, string phoneNumber)
         {
-            throw new NotImplementedException();
+            await repository.AddAsync(new Agent()
+            {
+                UserId = userId,
+                PhoneNumber = phoneNumber
+            });
         }
 
-        public async Task<bool> ExistById(string userId)
+        public async Task<bool> ExistByIdAsync(string userId)
         {
-          return await repository.AllReadOnly<Agent>()
-                .AnyAsync(a=>a.UserId == userId);
+            return await repository.AllReadOnly<Agent>()
+                  .AnyAsync(a => a.UserId == userId);
         }
 
-        public Task<bool> ExistByIdAsync(string userId)
+        public async Task<bool> UserHasRentsAsync(string userId)
         {
-            throw new NotImplementedException();
+            return await repository.AllReadOnly<House>().AnyAsync(h => h.RenterId == userId);
         }
 
-        public Task<bool> UserHasRentsAsync(string userId)
+        public async Task<bool> UserWithPhoneNumberExistsAsync(string phoneNumber)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UserWithPhoneNumberExistsAsync(string phoneNumber)
-        {
-            throw new NotImplementedException();
+            return await repository.AllReadOnly<Agent>().AnyAsync(h => h.PhoneNumber == phoneNumber);
         }
     }
 }
