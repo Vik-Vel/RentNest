@@ -16,7 +16,7 @@ namespace RentNest.Infrastructure.Data.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(AgentPhoneNumberMax)]
+        [MaxLength(AgentPhoneNumberMaxLength)]
         [Comment("Agent Phone Number")]
         public required string PhoneNumber { get; set; }
 
