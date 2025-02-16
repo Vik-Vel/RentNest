@@ -8,11 +8,11 @@ namespace RentNest.Core.Models.Agent
     public class BecomeAgentFormModel
     {
         [Required(ErrorMessage = RequiredMessage)]
-        [StringLength(AgentPhoneNumberMaxLength, 
-            MinimumLength = AgentPhoneNumberMinLength, 
+        [StringLength(AgentPhoneNumberMaxLength,
+            MinimumLength = AgentPhoneNumberMinLength,
             ErrorMessage = LengthMessage)]
         [Display(Name = "Phone number")]
         [Phone]
-        public required string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = null!;
     }
 }
