@@ -33,7 +33,7 @@ namespace RentNest.Infrastructure.Data.Common
             await DbSet<T>().AddAsync(entity);
         }
 
-        public async Task<int> SaveChangeAsync()
+        public async Task<int> SaveChangesAsync()
         {
             return await context.SaveChangesAsync();
         }
