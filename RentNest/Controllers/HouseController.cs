@@ -1,14 +1,27 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using RentNest.Attributes;
+using RentNest.Core.Contracts;
 using RentNest.Core.Models.House;
+using System.Security.Claims;
 
 namespace RentNest.Controllers
 {
     public class HouseController : BaseController
     {
+        private readonly IHouseService houseService;
+        private readonly IAgentService agentService;
+
+        public HouseController(IHouseService _houseService, IAgentService _agentService)
+        {
+            houseService = _houseService;
+            agentService = _agentService;
+
+        }
+
         [AllowAnonymous]
         [HttpGet]
-        public async Task <IActionResult> All()
+        public async Task<IActionResult> All()
         {
             var model = new AllHousesQueryModel();
             return View(model);
@@ -29,14 +42,37 @@ namespace RentNest.Controllers
         }
 
         [HttpGet]
-        public  IActionResult Add()
+        [MustBeAgent]
+        public async Task<IActionResult> Add()
         {
-            return View();
+            var model = new HouseFormModel()
+            {
+                Categories = await houseService.AllCategoriesAsync()
+            };
+
+            return View(model);
         }
 
         [HttpPost]
+        [MustBeAgent]
         public async Task<IActionResult> Add(HouseFormModel model)
         {
+            if(await houseService.CategoryExistsAsync(model.CategoryId) == false)
+            {
+                ModelState.AddModelError(nameof(model.CategoryId), "");
+            }
+
+            if(ModelState.IsValid == false)
+            {
+                model.Categories = await houseService.AllCategoriesAsync();
+
+                return View(model);
+            }
+
+            int? agentId = await agentService.GetAgentIdAsync(User.Id());
+
+            var newHouseId = await houseService.CreateAsync(model, agentId ?? 0);
+
             return RedirectToAction(nameof(Details), new { id = 1 });
         }
 
